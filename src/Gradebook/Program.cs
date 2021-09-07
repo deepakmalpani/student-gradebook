@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace Gradebook
 {
@@ -9,7 +10,6 @@ namespace Gradebook
         {
             var grades = new List<double>(){12.7,10.3,12.44};
             
-
             var book = new Book("Deepak's gradebook");
             book.AddGrade(89.1);
             book.AddGrade(12.7);
