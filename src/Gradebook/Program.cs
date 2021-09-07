@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Gradebook
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -15,8 +15,10 @@ namespace Gradebook
             book.AddGrade(12.7);
             book.AddGrade(12.44);
             
-            book.ShowStatistics();
-            
+            var stats = book.GetStatistics();
+            System.Console.WriteLine($"The lowest grade is {stats.Low}");
+            System.Console.WriteLine($"The highest grade is {stats.High}");
+            System.Console.WriteLine($"The average grade is {stats.Average:N1}");    
         }
     }
 }
