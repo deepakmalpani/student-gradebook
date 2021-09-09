@@ -43,8 +43,7 @@ namespace Gradebook.Tests
 
         private string MakeUpperCase(string x)
         {
-            x.ToUpper();
-            return x;
+            return x.ToUpper();
         }
 
         [Fact]

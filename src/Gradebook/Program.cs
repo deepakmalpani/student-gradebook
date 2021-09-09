@@ -8,17 +8,27 @@ namespace Gradebook
     {
         static void Main(string[] args)
         {
-            var grades = new List<double>(){12.7,10.3,12.44};
             
             var book = new Book("Deepak's gradebook");
-            book.AddGrade(89.1);
-            book.AddGrade(12.7);
-            book.AddGrade(12.44);
+            while(true){
+                System.Console.WriteLine("Enter the grade (or q to stop) :");
+                var input = Console.ReadLine();
+                if(input=="q"){
+                    break;
+                }
+                var grade = double.Parse(input);
+                book.AddGrade(grade);
+                
+            }
+            // book.AddGrade(89.1);
+            // book.AddGrade(12.7);
+            // book.AddGrade(12.44);
             
             var stats = book.GetStatistics();
             System.Console.WriteLine($"The lowest grade is {stats.Low}");
             System.Console.WriteLine($"The highest grade is {stats.High}");
             System.Console.WriteLine($"The average grade is {stats.Average:N1}");    
+            System.Console.WriteLine($"The letter grade is {stats.Letter}"); 
         }
     }
 }
