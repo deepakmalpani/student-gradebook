@@ -14,7 +14,7 @@ namespace Gradebook{
             grades.Add(grade);
             }
             else{
-                System.Console.WriteLine("Invalid Input");
+                throw new ArgumentException($"Invalid {nameof(grade)}");
             }
         }
 
