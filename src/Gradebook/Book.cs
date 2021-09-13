@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 
 namespace Gradebook{
+    public delegate void GradeAddedDelegate(Object sender, EventArgs args);
     public class Book{
         
         
@@ -11,10 +12,32 @@ namespace Gradebook{
         }
         public void AddGrade(double grade){
             if(grade <= 100 && grade >=0){
-            grades.Add(grade);
+                grades.Add(grade);
+                if(GradeAdded != null){
+                    GradeAdded(this, new EventArgs());
+                }
             }
             else{
                 throw new ArgumentException($"Invalid {nameof(grade)}");
+            }
+        }
+        public void AddGrade(char letter){
+            switch(letter){
+                case 'A':
+                    grades.Add(90);
+                    break;
+                case 'B':
+                    grades.Add(80);
+                    break;
+                case 'C':
+                    grades.Add(70);
+                    break;
+                case 'D':
+                    grades.Add(60);
+                    break;
+                default:
+                    grades.Add(0);
+                    break;
             }
         }
 
@@ -48,7 +71,16 @@ namespace Gradebook{
             }
             return result;
         }
+        public event GradeAddedDelegate GradeAdded;
+        
         private List<double> grades;
-        public string Name;
+        public string Name{
+            get;
+            set;
+        }
+
+        readonly string COURSE="Science"; // can be set in constructor
+        const string COURSE2 = "Maths"; // cant be set in constructor
+        //both can be read outside the class using public keyword
     }
 }
